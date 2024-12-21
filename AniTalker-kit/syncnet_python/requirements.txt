@@ -1,6 +1,6 @@
-torch==2.5.1
-torchvision==0.20.1
-numpy==2.0.2
+torch==2.0.1
+torchvision==0.15.2
+numpy==1.22.4
 scipy==1.13.1
 scenedetect==0.6.0
 opencv-contrib-python
