@@ -1,0 +1,32 @@
+docker run --rm \
+-v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw \
+-v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic \
+-v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth \
+anitalkerjudge:v1 \
+--stand_path /app/videos/raw \
+--generate_path /app/videos/synthetic 
+
+docker run --rm -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic 
+docker run -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic 
+
+docker run --rm -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic > output.log 2>&1
+
+docker run --rm --gpus all -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic > output.log 2>&1
+
+docker run --rm --gpus all -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic
+
+
+
+docker run --rm --gpus all anitalkerjudge:v1 nvidia-smi
+
+docker run --gpus all -it --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /bin/bash
+
+docker run --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic
+
+
+docker run --gpus all -it --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/demo/raw:/app/demo/raw -v F:/AniTalker/AniTalker-judge/demo/synthetic:/app/demo/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /bin/bash
+
+python3.9 /app/PSNR_SSIM_FID_NIQE.py /app/demo/raw /app/demo/synthetic
+
+docker run  --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/demo/raw:/app/demo/raw -v F:/AniTalker/AniTalker-judge/demo/synthetic:/app/demo/synthetic gre123/anitalkerjudge:v1 /app/demo/raw /app/demo/synthetic
+
