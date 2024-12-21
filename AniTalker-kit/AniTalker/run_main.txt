@@ -1,0 +1,24 @@
+docker run --rm \
+-v F:/AniTalker/AniTalker-main/test_demos/portraits/girl.png:/app/girl.png \
+-v F:/AniTalker/AniTalker-main/test_demos/audios/speech4.wav:/app/speech4.wav \
+-v F:/AniTalker/AniTalker-main/run_output:/app/run_output \
+anitalker:v1 \
+--input_image /app/girl.png \
+--input_audio_text /app/speech4.wav \
+--output_dir /app/run_output
+
+
+
+docker run --rm -v F:/AniTalker/AniTalker-main/test_demos/portraits/girl.png:/app/girl.png -v F:/AniTalker/AniTalker-main/test_demos/audios/speech4.wav:/app/speech4.wav -v F:/AniTalker/AniTalker-main/run_output:/app/run_output anitalker:v1 --input_image /app/girl.png --input_audio_text /app/speech4.wav --output_dir /app/run_output
+
+docker run --rm -v F:/AniTalker/AniTalker-main/test_demos/portraits/girl.png:/app/girl.png -v F:/AniTalker/AniTalker-main/test_demos/audios/speech4.wav:/app/speech4.wav -v F:/AniTalker/AniTalker-main/run_output:/app/run_output anitalker:v1 python3 /app/code/demo_final.py --input_image /app/girl.png --input_audio_text /app/speech4.wav --output_dir /app/run_output
+
+python code/demo_final.py --input_image ../test_demos/portraits/girl.png --input_audio ../test_demos/audios/speech4.wav --output_dir ../run_output
+
+
+docker run --rm --gpus all -v F:/AniTalker/AniTalker-main/test_demos/portraits/girl.png:/app/girl.png -v F:/AniTalker/AniTalker-main/test_demos/audios/speech4.wav:/app/speech4.wav -v F:/AniTalker/AniTalker-main/run_output:/app/run_output bellacora/anitalker-image:v1 --input_image /app/girl.png --input_audio_text /app/speech4.wav --output_dir /app/run_output
+
+docker run --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-main/test_demos/portraits/May.png:/app/May.png -v F:/AniTalker/AniTalker-main/test_demos/audios/short_May.wav:/app/short_May.wav -v F:/AniTalker/AniTalker-main/run_output:/app/run_output gre123/anitalkermodel:v1 --input_image /app/May.png --input_audio_text /app/short_May.wav --output_dir /app/run_output
+
+
+
