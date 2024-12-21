@@ -1,59 +1,39 @@
 # SyncNet
 
-This repository contains the demo for the audio-to-video synchronisation network (SyncNet). This network can be used for audio-visual synchronisation tasks including: 
-1. Removing temporal lags between the audio and visual streams in a video;
-2. Determining who is speaking amongst multiple faces in a video. 
+原项目来自https://github.com/joonson/syncnet_python/tree/master
 
-Please cite the paper below if you make use of the software. 
+## Change
+本项目在原项目的基础上,进行了下列修改：
 
-## Dependencies
-```
-pip install -r requirements.txt
-```
+1. 增加了demo.py、Dockerfile，修改了calculate_scores_real_videos.sh,方便构建docker镜像，并在构建完成后使用docker命令直接获取评估结果。
+2. 修改了代码中部分无法兼容numpy较高版本导致的问题（e.g. int32）
+3. 修改了requirements.txt，提供了必要的、相对较高版本的依赖。
 
-In addition, `ffmpeg` is required.
+## Quick Start
+1. 安装docker，宿主机CUDA版本为11.7及以上
+2. 从Dockerhub拉取构建好的镜像
+```
+docker pull bellacora/syncnet-image:v4
+```
+3. 拉取镜像后使用docker命令运行（如果为本地运行加 --gpus all）
+```
+docker run --rm --gpus all -v path:/app/videos --folderpath  /app/videos
+```
+其中path部分应当替换为宿主机上视频文件夹（注意是文件夹）的绝对路径，将会评估文件夹内所有视频
+4. 输出结果的最后X行（文件夹内有X个视频）为计算的LSE-D LSE-C值
 
+## Install
+如果想要自己手动构建镜像，请按照下列步骤进行：
+1. 将项目代码拉取到本地
+2. 在项目根目录下打开终端，运行
+```
+docker build -t <image-name> .
+```
+如果ubuntu镜像无法拉取，可尝试先单独拉取对应镜像。
+```
+docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
+```
+该镜像可以尝试修改为对应的CUDA版本（同时修改Dockerfile中相关版本及对应的依赖）
 
-## Demo
-
-SyncNet demo:
-```
-python demo_syncnet.py --videofile data/example.avi --tmp_dir /path/to/temp/directory
-```
-
-Check that this script returns:
-```
-AV offset:      3 
-Min dist:       5.353
-Confidence:     10.021
-```
-
-Full pipeline:
-```
-sh download_model.sh
-python run_pipeline.py --videofile /path/to/video.mp4 --reference name_of_video --data_dir /path/to/output
-python run_syncnet.py --videofile /path/to/video.mp4 --reference name_of_video --data_dir /path/to/output
-python run_visualise.py --videofile /path/to/video.mp4 --reference name_of_video --data_dir /path/to/output
-```
-
-Outputs:
-```
-$DATA_DIR/pycrop/$REFERENCE/*.avi - cropped face tracks
-$DATA_DIR/pywork/$REFERENCE/offsets.txt - audio-video offset values
-$DATA_DIR/pyavi/$REFERENCE/video_out.avi - output video (as shown below)
-```
-<p align="center">
-  <img src="img/ex1.jpg" width="45%"/>
-  <img src="img/ex2.jpg" width="45%"/>
-</p>
-
-## Publications
- 
-```
-@InProceedings{Chung16a,
-  author       = "Chung, J.~S. and Zisserman, A.",
-  title        = "Out of time: automated lip sync in the wild",
-  booktitle    = "Workshop on Multi-view Lip-reading, ACCV",
-  year         = "2016",
-}
-```
+如果requirements.txt内的依赖在电脑上无法兼容，可尝试调整torch和torchvision的版本，以便与CUDA版本兼容；但scenedetect的版本不能低于0.6.0，其他依赖版本依照原项目中给出的，应当满足torch>=1.4.0,torchvision>=0.5.0,numpy>=1.18.1,scipy>=1.2.1
+3. 运行成功后，使用docker命令运行，参考前述命令标准
