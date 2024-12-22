@@ -23,7 +23,8 @@ docker run --rm --gpus all -v path:/app/videos --folderpath /app/videos
 
 4. 输出结果的最后X行（文件夹内有X个视频）为计算的LSE-D LSE-C值，按照文件夹内视频名称的字典顺序输出
 
-## Install
+## Dockerfile
+
 如果想要自己手动构建镜像，请按照下列步骤进行：
 1. 将项目代码拉取到本地
 ```
@@ -44,7 +45,7 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 
 3. 运行成功后，使用docker命令运行，参考前述命令标准
 
-## Run
+## Local
 
 如果不通过docker，直接运行，请按照下列步骤进行：
 1. 将项目代码拉取到本地
