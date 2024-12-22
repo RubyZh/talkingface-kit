@@ -9,7 +9,9 @@ COPY detection_Resnet50_Final.pth /app/gfpgan/weights/detection_Resnet50_Final.p
 COPY GFPGANv1.4.pth /usr/local/lib/python3.9/dist-packages/gfpgan/weights/GFPGANv1.4.pth
 ```
 随后构建镜像
-2. 如果在本地不使用docker运行，可以打开web窗口进行视频生成。如果要使用命令行进行
+2. 如果在本地不使用docker运行，可以打开web窗口进行视频生成。
+
+也可以使用命令行:
 ```
 python demo_final.py \
 --input_image image_path \
@@ -18,7 +20,7 @@ python demo_final.py \
 [--face_sr]（没有该参数时生成256*256的视频，加上该参数后生成512*512的视频）
 [--device your_device]（默认值为cuda:0）
 ```
-上述路径均为绝对路径
+(上述路径均为绝对路径)
 
 3. ubuntu镜像无法拉取，可尝试先单独拉取对应镜像
 ```
@@ -26,7 +28,7 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 ```
 4. 检查点ckpts下载失败，使用huggingface镜像源进行下载[huggingface](https://hf-mirror.com/taocode/anitalker_ckpts)
 
-5. 安装dlib 时，构建其所需的 wheel 失败
+5. 安装 dlib 时，构建其所需的 wheel 失败
 
 核心原因是 dlib 的构建需要 CMake，但系统中未安装 CMake，或 CMake 没有正确配置。
 
@@ -65,4 +67,4 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 ```
 docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 ```
-2. 本地运行时需要ffmpeg
+2. 本地运行时需要ffmpeg, 在官网 [ffmpeg](https://ffmpeg.org) 下载ffmpeg，安装时勾选添加到环境变量，随后重新打开终端
