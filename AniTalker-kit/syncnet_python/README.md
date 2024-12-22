@@ -39,3 +39,24 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 如果requirements.txt内的依赖在电脑上无法兼容，可尝试调整torch和torchvision的版本，以便与CUDA版本兼容；但scenedetect的版本不能低于0.6.0，其他依赖版本依照原项目中给出的，应当满足torch>=1.4.0,torchvision>=0.5.0,numpy>=1.18.1,scipy>=1.2.1
 
 3. 运行成功后，使用docker命令运行，参考前述命令标准
+
+## 
+如果不通过docker，直接运行，请按照下列步骤进行：
+1. 将项目代码拉取到本地
+```
+git clone https://github.com/RubyZh/talkingface-kit.git
+cd talkingface-kit/AniTalker-kit/syncnet_python
+```
+2. 打开Anaconda Prompt Shell,运行
+```
+conda create -n syncnet python=3.9.0
+conda activate syncnet
+```
+3. 安装必要依赖
+```
+pip install -r requirements.txt
+```
+4. 将视频放至文件夹下，运行代码
+```
+sh calculate_scores_real_videos.sh /path/to/video/data/root
+```
