@@ -53,16 +53,18 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 git clone https://github.com/RubyZh/talkingface-kit.git
 cd talkingface-kit/AniTalker-kit/syncnet_python
 ```
-2. 打开Anaconda Prompt,运行
+2. 安装ffmpeg
+
+3. 打开Anaconda Prompt,运行
 ```
 conda create -n syncnet python=3.9.0
 conda activate syncnet
 ```
-3. 安装必要依赖
+4. 安装必要依赖
 ```
 pip install -r requirements.txt
 ```
-4. 将视频放至文件夹下，运行代码
+5. 将视频放至文件夹下，运行代码
 ```
 sh calculate_scores_real_videos.sh /path/to/video/data/root
 ```
