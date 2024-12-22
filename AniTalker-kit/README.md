@@ -58,4 +58,8 @@ docker run --rm --gpus all -v path:/app/videos --folderpath /app/videos
 
 ## Contributors
 
-![contributors](https://github.com/RubyZh/talkingface-kit/graphs/contributors)
+<a href="https://github.com/RubyZh/talkingface-kit/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=RubyZh/talkingface-kit" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
