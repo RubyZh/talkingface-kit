@@ -17,9 +17,10 @@ docker pull bellacora/syncnet-image:v4
 ```
 3. 拉取镜像后使用docker命令运行（如果为本地运行加 --gpus all）
 ```
-docker run --rm --gpus all -v path:/app/videos --folderpath  /app/videos
+docker run --rm --gpus all -v path:/app/videos --folderpath /app/videos
 ```
 其中path部分应当替换为宿主机上视频文件夹（注意是文件夹）的绝对路径，将会评估文件夹内所有视频
+
 4. 输出结果的最后X行（文件夹内有X个视频）为计算的LSE-D LSE-C值
 
 ## Install
