@@ -21,7 +21,7 @@ docker run --rm --gpus all -v path:/app/videos --folderpath /app/videos
 ```
 其中path部分应当替换为宿主机上视频文件夹（注意是文件夹）的绝对路径，将会评估文件夹内所有视频
 
-4. 输出结果的最后X行（文件夹内有X个视频）为计算的LSE-D LSE-C值
+4. 输出结果的最后X行（文件夹内有X个视频）为计算的LSE-D LSE-C值，按照文件夹内视频名称的字典顺序输出
 
 ## Install
 如果想要自己手动构建镜像，请按照下列步骤进行：
@@ -60,3 +60,4 @@ pip install -r requirements.txt
 ```
 sh calculate_scores_real_videos.sh /path/to/video/data/root
 ```
+在calculate_scores_real_videos.sh文件内，ls 命令默认按字典顺序列出文件，因此，$yourfilenames 中的文件会按照字典顺序排列，输出结果按照字典顺序排列
