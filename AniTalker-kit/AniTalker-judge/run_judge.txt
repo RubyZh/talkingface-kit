@@ -1,32 +1,19 @@
-docker run --rm \
--v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw \
--v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic \
--v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth \
-anitalkerjudge:v1 \
---stand_path /app/videos/raw \
---generate_path /app/videos/synthetic 
+首先拉取镜像：
+docker pull gre123/anitalkerjudge:v1
 
-docker run --rm -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic 
-docker run -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic 
+接着运行docker run命令：
+docker run --rm --gpus all \
+-v your_stand_videos_dir_path:/app/stand_videos_dir_path \
+-v your_generate_videos_dir_path:/app/generate_videos_dir_path \
+gre123/anitalkerjudge:v1 \
+/app/stand_videos_dir_path \
+/app/generate_videos_dir_path
+[--device your_device]（默认值为cuda:0）
 
-docker run --rm -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic > output.log 2>&1
+其中，your_stand_videos_dir_path、your_generate_videos_dir_path为文件夹的绝对路径。
 
-docker run --rm --gpus all -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic > output.log 2>&1
+注意：评测程序会对两个文件夹中名称相同的视频进行评测指标的计算，运行该程序需要确保对应的参照视频和生成视频名称相同且时长相同。
 
-docker run --rm --gpus all -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic
+例：
 
-
-
-docker run --rm --gpus all anitalkerjudge:v1 nvidia-smi
-
-docker run --gpus all -it --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /bin/bash
-
-docker run --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/videos/raw:/app/videos/raw -v F:/AniTalker/AniTalker-judge/videos/synthetic:/app/videos/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /app/videos/raw /app/videos/synthetic
-
-
-docker run --gpus all -it --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/demo/raw:/app/demo/raw -v F:/AniTalker/AniTalker-judge/demo/synthetic:/app/demo/synthetic -v F:/AniTalker/AniTalker-judge/inception_v3_google-0cc3c7bd.pth:/app/inception_v3_google-0cc3c7bd.pth anitalkerjudge:v1 /bin/bash
-
-python3.9 /app/PSNR_SSIM_FID_NIQE.py /app/demo/raw /app/demo/synthetic
-
-docker run  --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/demo/raw:/app/demo/raw -v F:/AniTalker/AniTalker-judge/demo/synthetic:/app/demo/synthetic gre123/anitalkerjudge:v1 /app/demo/raw /app/demo/synthetic
-
+docker run --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/demo/raw:/app/demo/raw -v F:/AniTalker/AniTalker-judge/demo/synthetic:/app/demo/synthetic gre123/anitalkerjudge:v1 /app/demo/raw /app/demo/synthetic
