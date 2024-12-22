@@ -59,7 +59,7 @@ cd talkingface-kit/AniTalker-kit/AniTalker
 git lfs install
 git clone https://huggingface.co/taocode/anitalker_ckpts ckpts
 ```
-3. 下载模型权重 [GFPGANv1.4.pth](https://drive.google.com/file/d/1cVAYvvMJQoX9Jbvj08EiWDOJzRWBhL1V/view?usp=drive_link){:target="_blank"},[detection_Resnet50_Final.pth](https://drive.google.com/file/d/13P3bCDXAAFvcQ5lxkzlby11U0WFZpymF/view?usp=drive_link){:target="_blank"},将文件放至AniTalker根目录下
+3. 下载模型权重 [GFPGANv1.4.pth](https://drive.google.com/file/d/1cVAYvvMJQoX9Jbvj08EiWDOJzRWBhL1V/view?usp=drive_link),[detection_Resnet50_Final.pth](https://drive.google.com/file/d/13P3bCDXAAFvcQ5lxkzlby11U0WFZpymF/view?usp=drive_link),将文件放至AniTalker根目录下
 
 4. 在项目根目录下打开终端，运行
 ```
@@ -96,7 +96,7 @@ pip install -r requirements.txt
 git lfs install
 git clone https://huggingface.co/taocode/anitalker_ckpts ckpts
 ```
-5. 下载模型权重 [GFPGANv1.4.pth](https://drive.google.com/file/d/1cVAYvvMJQoX9Jbvj08EiWDOJzRWBhL1V/view?usp=drive_link){:target="_blank"},[detection_Resnet50_Final.pth](https://drive.google.com/file/d/13P3bCDXAAFvcQ5lxkzlby11U0WFZpymF/view?usp=drive_link){:target="_blank"},将文件放至AniTalker根目录下
+5. 下载模型权重 [GFPGANv1.4.pth](https://drive.google.com/file/d/1cVAYvvMJQoX9Jbvj08EiWDOJzRWBhL1V/view?usp=drive_link),[detection_Resnet50_Final.pth](https://drive.google.com/file/d/13P3bCDXAAFvcQ5lxkzlby11U0WFZpymF/view?usp=drive_link),将文件放至AniTalker根目录下
 
 6. 运行,打开web界面交互
 ```
