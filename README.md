@@ -2,6 +2,8 @@
 
 本项目基于[AniTalker](https://github.com/X-LANCE/AniTalker),[SyncNet](https://github.com/joonson/syncnet_python/tree/master)
 
+项目包括三个部分：AniTalker、Judge和Syncnet
+
 ## AniTalker
 
 项目通过身份解耦面部运动编码，实现音频、图片生成视频。
