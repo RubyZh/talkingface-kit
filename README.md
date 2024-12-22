@@ -1,6 +1,7 @@
 # talkingface-kit
 
 本项目基于[AniTalker](https://github.com/X-LANCE/AniTalker),[SyncNet](https://github.com/joonson/syncnet_python/tree/master)
+
 项目包括三个部分：AniTalker、Judge和Syncnet
 
 
@@ -23,6 +24,7 @@
 用于计算生成视频的PSNR、SSIM、FID、NIQE，用于定量评估视频生成效果。
 
 在计算PSNR、SSIM、NIQE时，分别计算每一帧的指标结果，再取平均值。
+
 在计算FID时，对视频的每一帧利用inception_v3模型提取特征，将一个视频所有帧的特征向量求均值和协方差，进行计算。
 
 ## Syncnet
@@ -34,3 +36,26 @@
 1. 增加了demo.py、Dockerfile，修改了calculate_scores_real_videos.sh,方便构建docker镜像，并在构建完成后使用docker命令直接获取评估结果。
 2. 修改了代码中部分无法兼容numpy较高版本导致的问题（e.g. int32）
 3. 修改了requirements.txt，提供了必要的、相对较高版本的依赖。
+
+### Quick Start
+
+1. 安装docker，宿主机CUDA版本为11.7及以上
+2. 从Dockerhub拉取构建好的镜像
+```
+docker pull bellacora/syncnet-image:v4
+```
+3. 拉取镜像后使用docker命令运行（如果为本地运行加 --gpus all）
+```
+docker run --rm --gpus all -v path:/app/videos --folderpath /app/videos
+```
+其中path部分应当替换为宿主机上视频文件夹（注意是文件夹）的绝对路径，将会评估文件夹内所有视频，并按照文件夹内视频名称的字典顺序输出评估结果
+
+其他食用方式[Syncnet](https://github.com/RubyZh/talkingface-kit/blob/main/AniTalker-kit/syncnet_python/README.md)
+
+## Questions
+
+常见问题及解决方式可参考[Q&A](https://github.com/RubyZh/talkingface-kit/blob/main/AniTalker-kit/docs/Questions.md)
+
+## Contributors
+
+![contributors](https://github.com/RubyZh/talkingface-kit/graphs/contributors)

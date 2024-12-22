@@ -19,7 +19,7 @@ docker pull bellacora/syncnet-image:v4
 ```
 docker run --rm --gpus all -v path:/app/videos --folderpath /app/videos
 ```
-其中path部分应当替换为宿主机上视频文件夹（注意是文件夹）的绝对路径，将会评估文件夹内所有视频
+其中path部分应当替换为宿主机上视频文件夹（注意是文件夹）的绝对路径，将会评估文件夹内所有视频，并按照文件夹内视频名称的字典顺序输出评估结果
 
 4. 输出结果的最后X行（文件夹内有X个视频）为计算的LSE-D LSE-C值，按照文件夹内视频名称的字典顺序输出
 
