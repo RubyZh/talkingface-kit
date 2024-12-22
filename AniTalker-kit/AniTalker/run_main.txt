@@ -1,24 +1,21 @@
-docker run --rm \
--v F:/AniTalker/AniTalker-main/test_demos/portraits/girl.png:/app/girl.png \
--v F:/AniTalker/AniTalker-main/test_demos/audios/speech4.wav:/app/speech4.wav \
--v F:/AniTalker/AniTalker-main/run_output:/app/run_output \
-anitalker:v1 \
---input_image /app/girl.png \
---input_audio_text /app/speech4.wav \
---output_dir /app/run_output
+首先拉取镜像：
+docker pull gre123/anitalkermodel:v1
 
+接着运行docker run命令：
+docker run --rm –gpus all \
+-v your_image_path:/app/image_path \
+-v your_audio_path:/app/audio_path \
+-v your_output_dir_path:/app/output_dir_path \
+gre123/anitalkermodel:v1 \
+--input_image /app/image_path \
+--input_audio_text /app/audio_path \
+--output_dir /app/output_dir_path
+[--face_sr]（没有该参数时生成256*256的视频，加上该参数后生成512*512的视频）
+[--device your_device]（默认值为cuda:0）
 
+其中，your_image_path、your_audio_path为文件的绝对路径，your_output_dir_path为文件夹的绝对路径。
 
-docker run --rm -v F:/AniTalker/AniTalker-main/test_demos/portraits/girl.png:/app/girl.png -v F:/AniTalker/AniTalker-main/test_demos/audios/speech4.wav:/app/speech4.wav -v F:/AniTalker/AniTalker-main/run_output:/app/run_output anitalker:v1 --input_image /app/girl.png --input_audio_text /app/speech4.wav --output_dir /app/run_output
-
-docker run --rm -v F:/AniTalker/AniTalker-main/test_demos/portraits/girl.png:/app/girl.png -v F:/AniTalker/AniTalker-main/test_demos/audios/speech4.wav:/app/speech4.wav -v F:/AniTalker/AniTalker-main/run_output:/app/run_output anitalker:v1 python3 /app/code/demo_final.py --input_image /app/girl.png --input_audio_text /app/speech4.wav --output_dir /app/run_output
-
-python code/demo_final.py --input_image ../test_demos/portraits/girl.png --input_audio ../test_demos/audios/speech4.wav --output_dir ../run_output
-
-
-docker run --rm --gpus all -v F:/AniTalker/AniTalker-main/test_demos/portraits/girl.png:/app/girl.png -v F:/AniTalker/AniTalker-main/test_demos/audios/speech4.wav:/app/speech4.wav -v F:/AniTalker/AniTalker-main/run_output:/app/run_output bellacora/anitalker-image:v1 --input_image /app/girl.png --input_audio_text /app/speech4.wav --output_dir /app/run_output
+例：
 
 docker run --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-main/test_demos/portraits/May.png:/app/May.png -v F:/AniTalker/AniTalker-main/test_demos/audios/short_May.wav:/app/short_May.wav -v F:/AniTalker/AniTalker-main/run_output:/app/run_output gre123/anitalkermodel:v1 --input_image /app/May.png --input_audio_text /app/short_May.wav --output_dir /app/run_output
-
-
 
