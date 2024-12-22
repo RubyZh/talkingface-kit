@@ -1,6 +1,8 @@
 # talkingface-kit
 
 本项目基于[AniTalker](https://github.com/X-LANCE/AniTalker),[SyncNet](https://github.com/joonson/syncnet_python/tree/master)
+项目包括三个部分：AniTalker、Judge和Syncnet
+
 
 ## AniTalker
 
@@ -14,10 +16,14 @@
 4. 新增了Dockerfile，用于构建docker镜像。
 5. 新增了run_main.txt，给出docker镜像的运行示例。
 6. 修改了requirements.txt，修改了torch、torchvision、torchaudio的版本，以适配cuda11.7，增加了gfpgan包，以便在运行时使用 --face_sr参数，生成512*512的视频。
+7. 新增了parsing_parsenet.pth，将模型参数保存在本地。
 
 ## Judge
 
 用于计算生成视频的PSNR、SSIM、FID、NIQE，用于定量评估视频生成效果。
+
+在计算PSNR、SSIM、NIQE时，分别计算每一帧的指标结果，再取平均值。
+在计算FID时，对视频的每一帧利用inception_v3模型提取特征，将一个视频所有帧的特征向量求均值和协方差，进行计算。
 
 ## Syncnet
 
