@@ -60,6 +60,30 @@ docker run --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-m
 
 在计算FID时，对视频的每一帧利用inception_v3模型提取特征，将一个视频所有帧的特征向量求均值和协方差，进行计算。
 
+### Quick Start
+
+1. 安装docker，宿主机CUDA版本为11.7及以上
+2. 拉取镜像：
+```
+docker pull gre123/anitalkerjudge:v1
+```
+3. 参考以下docker run命令运行：
+```
+docker run --rm --gpus all \
+-v your_stand_videos_dir_path:/app/stand_videos_dir_path \
+-v your_generate_videos_dir_path:/app/generate_videos_dir_path \
+gre123/anitalkerjudge:v1 \
+/app/stand_videos_dir_path \
+/app/generate_videos_dir_path
+[--device your_device]（默认值为cuda:0）
+```
+其中，your_stand_videos_dir_path、your_generate_videos_dir_path为文件夹的绝对路径。
+注意：评测程序会对两个文件夹中名称相同的视频进行评测指标的计算，运行该程序需要确保对应的参照视频和生成视频名称相同且时长相同。
+
+### 其他食用方法
+
+[Judge](https://github.com/RubyZh/talkingface-kit/blob/main/AniTalker-kit/AniTalker-judge/README.md)
+
 ## Syncnet
 
 用于计算生成视频的LSE-D LSE-C,用于定量评估生成视频效果，无需ground-truth
