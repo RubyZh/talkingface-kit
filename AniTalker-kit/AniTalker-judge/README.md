@@ -33,7 +33,8 @@ gre123/anitalkerjudge:v1 \
 如果想要自己手动构建镜像，请按照下列步骤进行：
 
 1. 将项目代码拉取到本地
-2. 在项目根目录下打开终端，运行以下命令：
+2. 下载缺少的模型参数文件inception_v3_google-0cc3c7bd.pth，放在根目录下。（可以在[Google Drive](https://drive.google.com/file/d/1urWE3mUroo2rOn-A2nBXWhuKQ2I1M2zd/view?usp=drive_link)或[下载链接](https://download.pytorch.org/models/inception_v3_google-0cc3c7bd.pth)下载）
+3. 在项目根目录下打开终端，运行以下命令：
 
 ```
 docker build --rm -f "Dockerfile" -t <image-name>:<tag> "."
@@ -52,7 +53,8 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 如果想要直接在本地运行，请按照下列步骤进行：
 
 1. 将项目代码拉取到本地
-2. 打开Anaconda Prompt Shell，创建conda环境：
+2. 下载缺少的模型参数文件inception_v3_google-0cc3c7bd.pth，放在根目录下。（可以在[Google Drive](https://drive.google.com/file/d/1urWE3mUroo2rOn-A2nBXWhuKQ2I1M2zd/view?usp=drive_link)或[下载链接](https://download.pytorch.org/models/inception_v3_google-0cc3c7bd.pth)下载）
+3. 打开Anaconda Prompt Shell，创建conda环境：
 
 ```
 conda create -n AniTalker_judge python=3.9.21
