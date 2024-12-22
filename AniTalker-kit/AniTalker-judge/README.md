@@ -33,6 +33,12 @@ gre123/anitalkerjudge:v1 \
 如果想要自己手动构建镜像，请按照下列步骤进行：
 
 1. 将项目代码拉取到本地
+
+```
+git clone https://github.com/RubyZh/talkingface-kit.git
+cd talkingface-kit/AniTalker-kit/AniTalker-judge
+```
+
 2. 在项目根目录下打开终端，运行以下命令：
 
 ```
@@ -52,6 +58,12 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 如果想要直接在本地运行，请按照下列步骤进行：
 
 1. 将项目代码拉取到本地
+
+```
+git clone https://github.com/RubyZh/talkingface-kit.git
+cd talkingface-kit/AniTalker-kit/AniTalker-judge
+```
+
 2. 打开Anaconda Prompt Shell，创建conda环境：
 
 ```
