@@ -26,6 +26,10 @@ docker run --rm --gpus all -v path:/app/videos --folderpath /app/videos
 ## Install
 如果想要自己手动构建镜像，请按照下列步骤进行：
 1. 将项目代码拉取到本地
+```
+git clone https://github.com/RubyZh/talkingface-kit.git
+cd talkingface-kit/AniTalker-kit/syncnet_python
+```
 2. 在项目根目录下打开终端，运行
 ```
 docker build -t <image-name> .
@@ -40,14 +44,15 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 
 3. 运行成功后，使用docker命令运行，参考前述命令标准
 
-## 
+## Run
+
 如果不通过docker，直接运行，请按照下列步骤进行：
 1. 将项目代码拉取到本地
 ```
 git clone https://github.com/RubyZh/talkingface-kit.git
 cd talkingface-kit/AniTalker-kit/syncnet_python
 ```
-2. 打开Anaconda Prompt Shell,运行
+2. 打开Anaconda Prompt,运行
 ```
 conda create -n syncnet python=3.9.0
 conda activate syncnet
