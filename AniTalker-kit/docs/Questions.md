@@ -9,6 +9,7 @@ COPY detection_Resnet50_Final.pth /app/gfpgan/weights/detection_Resnet50_Final.p
 COPY GFPGANv1.4.pth /usr/local/lib/python3.9/dist-packages/gfpgan/weights/GFPGANv1.4.pth
 ```
 随后构建镜像
+
 2. 如果在本地不使用docker运行，可以打开web窗口进行视频生成。
 
 也可以使用命令行:
@@ -43,8 +44,8 @@ docker pull nvidia/cuda:11.7.1-runtime-ubuntu22.04
 6. 执行 python code/webgui.py 并选择mp3格式的音频文件时出现报错
 
 原因是系统中缺少 ffmpeg，gradio 库在尝试加载非 WAV 格式的音频文件时依赖于 ffmpeg
-解决方法：在官网 [ffmpeg](https://ffmpeg.org) 下载ffmpeg，安装时勾选添加到环境变量，随后重新打开终端
 
+解决方法：在官网 [ffmpeg](https://ffmpeg.org) 下载ffmpeg，安装时勾选添加到环境变量，随后重新打开终端
 
 ## Judge
 
